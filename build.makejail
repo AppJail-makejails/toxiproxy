@@ -6,4 +6,5 @@ CMD pw useradd -n toxiproxy -d /toxiproxy -c "TCP proxy to simulate network and 
 CMD mkdir -p /toxiproxy/bin
 CMD fetch -o /toxiproxy/bin/toxiproxy-server "https://github.com/Shopify/toxiproxy/releases/download/v${toxiproxy_version}/toxiproxy-server-freebsd-amd64"
 CMD fetch -o /toxiproxy/bin/toxiproxy-cli "https://github.com/Shopify/toxiproxy/releases/download/v${toxiproxy_version}/toxiproxy-cli-freebsd-amd64"
+CMD chmod +x /toxiproxy/bin/toxiproxy-*
 CMD chown -R toxiproxy:toxiproxy /toxiproxy
