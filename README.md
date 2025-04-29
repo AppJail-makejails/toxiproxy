@@ -2,6 +2,10 @@
 
 Toxiproxy is a framework for simulating network conditions. It's made specifically to work in testing, CI and development environments, supporting deterministic tampering with connections, but with support for randomized chaos and customization. Toxiproxy is the tool you need to prove with tests that your application doesn't have single points of failure.
 
+github.com/Shopify/toxiproxy
+
+<img src="https://camo.githubusercontent.com/d1540f6bdeef0090439d924a09d1493cda68eb3d54d659f4cbc1b1c53ac7879e/687474703a2f2f692e696d6775722e636f6d2f734f614e77306f2e706e67" alt="toxiproxy logo" width="80%" height="auto">
+
 ## How to use this Makejail
 
 ```sh
