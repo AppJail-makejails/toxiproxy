@@ -19,11 +19,11 @@ appjail start toxiproxy
 
 * `toxiproxy_ajspec` (default: `gh+AppJail-makejails/toxiproxy`): Entry point where the `appjail-ajspec(5)` file is located.
 * `toxiproxy_config` (optional): Copy a Toxiproxy configuration file.
-* `toxiproxy_tag` (default: `13.5`): see [#tags](#tags).
+* `toxiproxy_tag` (default: `%%TAG1%%`): see [#tags](#tags).
 
 ## Tags
 
 | Tag           | Arch    | Version            | Type   | `toxiproxy_version`
 | ------------- | --------| ------------------ | ------ | ------------------ |
-| `13.5`    | `amd64` | `13.5-RELEASE` | `thin` | `2.12.0`      |
-| `14.2`    | `amd64` | `14.2-RELEASE` | `thin` | `2.12.0`      |
+| `%%TAG1%%`    | `amd64` | `%%TAG1%%-RELEASE` | `thin` | `%%VERSION%%`      |
+| `%%TAG2%%`    | `amd64` | `%%TAG2%%-RELEASE` | `thin` | `%%VERSION%%`      |
