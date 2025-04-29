@@ -4,7 +4,7 @@ Toxiproxy is a framework for simulating network conditions. It's made specifical
 
 github.com/Shopify/toxiproxy
 
-<img src="https://camo.githubusercontent.com/d1540f6bdeef0090439d924a09d1493cda68eb3d54d659f4cbc1b1c53ac7879e/687474703a2f2f692e696d6775722e636f6d2f734f614e77306f2e706e67" alt="toxiproxy logo" width="80%" height="auto">
+<img src="https://camo.githubusercontent.com/d1540f6bdeef0090439d924a09d1493cda68eb3d54d659f4cbc1b1c53ac7879e/687474703a2f2f692e696d6775722e636f6d2f734f614e77306f2e706e67" alt="toxiproxy logo" width="60%" height="auto">
 
 ## How to use this Makejail
 
