@@ -7,31 +7,8 @@ ARG toxiproxy_ajspec=gh+AppJail-makejails/toxiproxy
 FROM --entrypoint "${toxiproxy_ajspec}" toxiproxy:${toxiproxy_tag}
 
 RAW if [ -n "${toxiproxy_config}" ]; then
-        COPY "${toxiproxy_config}" /toxiproxy/config.json
-        CMD chown toxiproxy:toxiproxy /toxiproxy/config.json
+        COPY "${toxiproxy_config}" /usr/local/etc/toxiproxy.json
 RAW fi
 
-STOP
-
-STAGE start
-
-USER toxiproxy
-WORKDIR /toxiproxy
-
-RUN daemon \
-        -t "TCP proxy to simulate network and system conditions for chaos and resiliency testing" \
-        -p /toxiproxy/.pid \
-        -o /toxiproxy/.log \
-            ./bin/toxiproxy-server -config /toxiproxy/config.json
-
-STAGE custom:toxiproxy_status
-
-CMD if [ -f "/toxiproxy/.pid" ]; then \
-        top -ap `head -1 /toxiproxy/.pid`; \
-    fi
-
-STAGE custom:toxiproxy_log
-
-CMD if [ -f "/toxiproxy/.log" ]; then \
-        less -R /toxiproxy/.log; \
-    fi
+SYSRC toxiproxy_server_enable=YES
+SERVICE toxiproxy-server start

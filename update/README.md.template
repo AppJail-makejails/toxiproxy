@@ -27,7 +27,7 @@ appjail start toxiproxy
 
 ## Tags
 
-| Tag           | Arch    | Version            | Type   | `toxiproxy_version`
-| ------------- | --------| ------------------ | ------ | ------------------ |
-| `%%TAG1%%`    | `amd64` | `%%TAG1%%-RELEASE` | `thin` | `%%VERSION%%`      |
-| `%%TAG2%%`    | `amd64` | `%%TAG2%%-RELEASE` | `thin` | `%%VERSION%%`      |
+| Tag           | Arch    | Version            | Type   |
+| ------------- | --------| ------------------ | ------ |
+| `%%TAG1%%`    | `amd64` | `%%TAG1%%-RELEASE` | `thin` |
+| `%%TAG2%%`    | `amd64` | `%%TAG2%%-RELEASE` | `thin` |
