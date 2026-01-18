@@ -1,6 +1,6 @@
 INCLUDE options/options.makejail
 
-ARG toxiproxy_tag=13.5
+ARG toxiproxy_tag=14.3
 ARG toxiproxy_config?
 ARG toxiproxy_ajspec=gh+AppJail-makejails/toxiproxy
 
@@ -10,5 +10,5 @@ RAW if [ -n "${toxiproxy_config}" ]; then
         COPY "${toxiproxy_config}" /usr/local/etc/toxiproxy.json
 RAW fi
 
-SYSRC toxiproxy_server_enable=YES
-SERVICE toxiproxy-server start
+SYSRC toxiproxy_enable=YES
+SERVICE toxiproxy start
