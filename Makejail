@@ -1,14 +1,5 @@
-INCLUDE options/options.makejail
+ARG toxiproxy_from=ghcr.io/appjail-makejails/toxiproxy
+ARG toxiproxy_tag=latest
 
-ARG toxiproxy_tag=14.3
-ARG toxiproxy_config?
-ARG toxiproxy_ajspec=gh+AppJail-makejails/toxiproxy
-
-FROM --entrypoint "${toxiproxy_ajspec}" toxiproxy:${toxiproxy_tag}
-
-RAW if [ -n "${toxiproxy_config}" ]; then
-        COPY "${toxiproxy_config}" /usr/local/etc/toxiproxy.json
-RAW fi
-
-SYSRC toxiproxy_enable=YES
-SERVICE toxiproxy start
+OPTION overwrite=force
+OPTION from=${toxiproxy_from}:${toxiproxy_tag}

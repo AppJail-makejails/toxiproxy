@@ -4,30 +4,48 @@ Toxiproxy is a framework for simulating network conditions. It's made specifical
 
 github.com/Shopify/toxiproxy
 
-<img src="https://camo.githubusercontent.com/d1540f6bdeef0090439d924a09d1493cda68eb3d54d659f4cbc1b1c53ac7879e/687474703a2f2f692e696d6775722e636f6d2f734f614e77306f2e706e67" alt="toxiproxy logo" width="60%" height="auto">
+<img src="https://camo.githubusercontent.com/0529c4e7ec6f9842799a9150ba22a45318b533ca267c0ee12df8356a643f9d90/687474703a2f2f692e696d6775722e636f6d2f734f614e77306f2e706e67" width="30%" height="auto" alt="Toxiproxy logo">
 
 ## How to use this Makejail
 
-```sh
-appjail makejail \
-    -j toxiproxy \
-    -f gh+AppJail-makejails/toxiproxy \
+```console
+$ # Server
+$ appjail oci run -Pd \
+    -o overwrite=force \
     -o virtualnet=":<random> default" \
     -o nat \
-    -- \
-    --toxiproxy_config /path/to/your/config
-appjail start toxiproxy
+    ghcr.io/appjail-makejails/toxiproxy toxiproxy
+$ # Client
+$ appjail oci run \
+    -o overwrite=force \
+    -o alias \
+    -o ip4_inherit \
+    -o ephemeral \
+    ghcr.io/appjail-makejails/toxiproxy toxiproxy-cli \
+    toxiproxy-cli --host http://toxiproxy:8474 list
 ```
 
-### Arguments
+### Arguments (stage: build)
 
-* `toxiproxy_ajspec` (default: `gh+AppJail-makejails/toxiproxy`): Entry point where the `appjail-ajspec(5)` file is located.
-* `toxiproxy_config` (optional): Copy a Toxiproxy configuration file.
-* `toxiproxy_tag` (default: `14.3`): see [#tags](#tags).
+* `toxiproxy_from` (default: `ghcr.io/appjail-makejails/toxiproxy`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
+* `toxiproxy_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
 
-## Tags
+### Environment (OCI image)
 
-| Tag           | Arch    | Version            | Type   |
-| ------------- | --------| ------------------ | ------ |
-| `14.3`    | `amd64` | `14.3-RELEASE` | `thin` |
-| `15`    | `amd64` | `15` | `thin` |
+* `PGID` (default: `1000`): Equivalent to `PUID` but for the Process Group ID.
+* `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
+
+## OCI Configuration
+
+```yaml
+build:
+  variants:
+    - tag: 15.1
+      containerfile: Containerfile
+      aliases: ["latest"]
+      default: true
+      args:
+        FREEBSD_RELEASE: "15.1"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+```
