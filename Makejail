@@ -1,5 +1,6 @@
 ARG toxiproxy_from=ghcr.io/appjail-makejails/toxiproxy
 ARG toxiproxy_tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=${toxiproxy_from}:${toxiproxy_tag}
