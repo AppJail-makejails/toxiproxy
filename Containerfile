@@ -14,7 +14,7 @@ LABEL org.opencontainers.image.title="Toxiproxy" \
 RUN set -xe; \
     \
     pkg update; \
-    pkg install -U toxiproxy-server toxiproxy-cli; \
+    pkg install toxiproxy-server toxiproxy-cli; \
     \
     if [ -z "${NO_PKGCLEAN}" ]; then \
         pkg clean -a; \
